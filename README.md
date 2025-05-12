@@ -301,7 +301,7 @@ services:
 
 ### ⚠️ IPv6
 
-Docker requires network_mode be set to host in order to access the IPv6 public address.
+Docker requires network_mode be set to host in order to access the IPv6 public address unless you have configured Docker for IPv6 networking.
 
 ### 🏃‍♂️ Running
 
