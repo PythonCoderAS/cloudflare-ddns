@@ -130,6 +130,12 @@ def commitRecord(ip):
             return
         base_domain_name = response["result"]["name"]
         for subdomain in subdomains:
+            if ip["type"] == "A" and not subdomain.get("a", True):
+                # If this is an A record and the user disabled A records for the subdomain, bail early
+                continue
+            if ip["type"] == "AAAA" and not subdomain.get("aaaa", True):
+                # Same as above but for AAAA records
+                continue
             try:
                 name = subdomain["name"].lower().strip()
                 proxied = subdomain["proxied"]
